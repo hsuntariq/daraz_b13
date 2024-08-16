@@ -1,5 +1,5 @@
 <nav style="background: #F85606" class="position-fixed w-100 z-3  top-0">
-    <ul class="d-flex justify-content-end p-0 m-0 list-unstyled gap-3 text-white fw-medium me-4 text-uppercase">
+    <ul class="d-flex header-ul justify-content-end p-0 m-0 list-unstyled gap-3 text-white fw-medium me-4 text-uppercase">
         <li>save more on app</li>
         <li>sell on daraz</li>
         <li>help & support</li>

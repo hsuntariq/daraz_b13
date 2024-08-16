@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\productController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// admin routes
+Route::view("/admin-dashboard",'admin.dashboard');
+Route::view("/admin-add-product",'admin.add-product');
+Route::view("/admin-view-product",'admin.view-product');
+
+
+
+Route::post('/add-product',[productController::class,'addProduct']);

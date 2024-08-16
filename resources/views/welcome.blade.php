@@ -1,45 +1,66 @@
 <style>
-    body{
+    body {
         background: #F5F5F5 !important;
+
     }
-    .my-card:last-child{
-        border-right: 0 !important
-    }
-    .my-card:nth-child(6){
+
+    .my-card:last-child {
         border-right: 0 !important
     }
 
-    .my-card:hover{
+    .my-card:nth-child(6) {
+        border-right: 0 !important
+    }
+
+    .my-card:hover {
         box-shadow: 2px 2px 2px 2px lightgray
     }
 
-    .text-sm{
+    .text-sm {
         font-size: 0.7rem
     }
 
 
-    .text-orange{
+    .text-orange {
         color: #F85606
     }
 
-    .text-md{
+    .text-md {
         font-size: 0.9rem;
     }
 
+    .carousel {
+        margin-top: 4rem
+    }
+
+    @media (max-width:1000px) {
+        .app-card {
+            display: none
+        }
+    }
+
+    @media (max-width:900px) {
+        .header-ul li {
+            display: none
+        }
+    }
 </style>
 <x-layout>
-    <x-navbar/>
-    <x-slider/>
+    <x-navbar />
+    <x-slider />
 
     <div class="container">
         <h2 class="fw-light">Categories</h2>
         <div class="row flex-wrap">
             @for ($i = 0; $i < 12; $i++)
-            <div class="col-xl-2 bg-white col-lg-3 col-md-4 col-sm-4 col-6 border border-top-0 border-start-0 my-card text-center p-4 rounded-0">
+                <div
+                    class="col-xl-2 bg-white col-lg-3 col-md-4 col-sm-4 col-6 border border-top-0 border-start-0 my-card text-center p-4 rounded-0">
 
-                    <img width="70%" class="d-block mx-auto" src="https://img.drz.lazcdn.com/static/pk/p/0bb9c6c92099c81dbe1aa42910a8ac5f.jpg_80x80q80.jpg_.webp" alt="">
+                    <img width="70%" class="d-block mx-auto"
+                        src="https://img.drz.lazcdn.com/static/pk/p/0bb9c6c92099c81dbe1aa42910a8ac5f.jpg_80x80q80.jpg_.webp"
+                        alt="">
                     <p style="width:max-content">Messenger bags</p>
-            </div>
+                </div>
             @endfor
         </div>
     </div>
@@ -62,7 +83,9 @@
             @for ($i = 0; $i < 6; $i++)
                 <div class="col-lg-2 my-2">
                     <div class="card border-0">
-                        <img width="100%" src="https://img.drz.lazcdn.com/g/kf/S4c20e80c36274e208a7920b5fff8fe5a9.jpg_200x200q80.jpg_.webp" alt="">    
+                        <img width="100%"
+                            src="https://img.drz.lazcdn.com/g/kf/S4c20e80c36274e208a7920b5fff8fe5a9.jpg_200x200q80.jpg_.webp"
+                            alt="">
                         <p class="m-0 text-capitalize">
                             Washing machine GM-720 for medium sized...
                         </p>
@@ -79,8 +102,8 @@
                                 -18%
                             </p>
                         </div>
-                    </div>    
-                </div>   
+                    </div>
+                </div>
             @endfor
         </div>
     </div>
@@ -93,7 +116,9 @@
             @for ($i = 0; $i < 23; $i++)
                 <div class="col-lg-2 my-2">
                     <div class="card border-0">
-                        <img width="100%" src="https://img.drz.lazcdn.com/static/pk/p/a00e72d5a5366249be39be262745d3cf.jpg_200x200q80.jpg_.webp" alt="">    
+                        <img width="100%"
+                            src="https://img.drz.lazcdn.com/static/pk/p/a00e72d5a5366249be39be262745d3cf.jpg_200x200q80.jpg_.webp"
+                            alt="">
                         <p class="m-0 text-capitalize">
                             Washing machine GM-720 for medium sized...
                         </p>
@@ -113,7 +138,7 @@
                         <div class="text-sm">
                             ⭐⭐⭐⭐⭐
                         </div>
-                    </div>    
+                    </div>
                 </div>
             @endfor
         </div>
@@ -157,29 +182,33 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="d-flex align-items-center">
-                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp" width="40px" alt="">
-                <div class="">
+                <div class="d-flex align-items-center">
+                    <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp"
+                        width="40px" alt="">
+                    <div class="">
 
-                    <p class="text-orange m-0 text-capitalize">
-                        happy shopping
-                    </p>
-                    <p class="text-capitalize m-0">Download the app</p>
+                        <p class="text-orange m-0 text-capitalize">
+                            happy shopping
+                        </p>
+                        <p class="text-capitalize m-0">Download the app</p>
+                    </div>
                 </div>
-               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
-               
-                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp" width="40px" alt="">
-                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp" width="40px" alt=""><br>
-                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp" width="40px" alt="">
-                
-                
+
+                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp"
+                    width="40px" alt="">
+                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp"
+                    width="40px" alt=""><br>
+                <img src="https://img.lazcdn.com/us/domino/1ee015d6a5c62fd0339c88c657c1c183.jpg_2200x2200q80.jpg_.webp"
+                    width="40px" alt="">
+
+
             </div>
-            
+
         </div>
     </footer>
-    
+
 
 
 
