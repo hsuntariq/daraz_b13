@@ -32,4 +32,4 @@ Route::post('/add-product',[productController::class,'addProduct']);
 
 
 
-Route::get('/',[productController::class,'getData']);
+Route::get('/',[productController::class,'getProducts']);

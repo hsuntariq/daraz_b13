@@ -31,6 +31,12 @@ class productController extends Controller
     }
 
 
+
+    public function getProducts(){
+        $prod = Products::all();
+        return view('welcome',compact('prod'));
+    }
+
     
 
 

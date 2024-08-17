@@ -113,26 +113,29 @@
         <h2 class="fw-light text-capitalize">just for you</h2>
         <div class="row">
 
-            @for ($i = 0; $i < 23; $i++)
-                <div class="col-lg-2 my-2">
-                    <div class="card border-0">
-                        <img width="100%"
-                            src="https://img.drz.lazcdn.com/static/pk/p/a00e72d5a5366249be39be262745d3cf.jpg_200x200q80.jpg_.webp"
-                            alt="">
+
+            @foreach ($prod as $item)
+                <div class="col-lg-3 my-2">
+                    <div class="card border-0 shadow p-4">
+                        <img width="100%" height="200px" style="object-fit: cover"
+                            src="{{ asset('/storage/' . $item->image) }}" alt="">
                         <p class="m-0 text-capitalize">
                             Washing machine GM-720 for medium sized...
                         </p>
                         <p class="fs-4" style="color: #F85606">
-                            Rs.12,099
+
+                            Rs. <span class="discount_price">
+                                {{ $item->discount_price }}
+                            </span>
 
                         </p>
                         <div class="d-flex">
 
-                            <p class="text-secondary m-0 text-sm text-decoration-line-through">
-                                Rs.14,800
+                            <p class="text-secondary m-0 text-sm text-decoration-line-through ">
+                                Rs. <span class="actual_price"> {{ $item->actual_price }}</span>
                             </p>
-                            <p class="m-0 text-sm">
-                                -18%
+                            <p class="m-0 text-sm percentage">
+
                             </p>
                         </div>
                         <div class="text-sm">
@@ -140,7 +143,8 @@
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
+
         </div>
         <button class="btn w-25 my-3 d-block mx-auto rounded-0 border border-info text-info">
             Load More
@@ -209,7 +213,19 @@
         </div>
     </footer>
 
+    <script>
+        let discount_price = document.querySelectorAll('.discount_price')
+        let actual_price = document.querySelectorAll('.actual_price')
+        let percentage = document.querySelectorAll('.percentage')
 
+        actual_price.forEach((item, index) => {
+            let convertedActualPrice = parseInt(item.innerText)
+            let convertedDiscountPrice = parseInt(discount_price[index].innerText)
+            let discount = (((convertedActualPrice - convertedDiscountPrice) / convertedActualPrice) * 100).toFixed(
+                0)
+            percentage[index].innerText = `${discount}%`
+        })
+    </script>
 
 
 </x-layout>
