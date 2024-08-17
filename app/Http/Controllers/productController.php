@@ -24,12 +24,14 @@ class productController extends Controller
             // send the data into the database
 
             Products::create($formFields);
-
+            return back()->with('message','Product added successfully!');
 
 
 
     }
 
+
+    
 
 
 

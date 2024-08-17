@@ -1,4 +1,5 @@
 <x-admin-layout>
+    <x-flash />
     <div class="container shadow p-5 rounded-3 col-xl-6 col-lg-7 col-md-9 mx-auto">
         <h1 class="display-4 text-center fw-medium" style="color: orangered">
             <i class="bi bi-plus"></i> Add Products
@@ -47,7 +48,7 @@
             <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" class="form-control preview_input" name="image" id=""
-                    value="{{ old('file') }}">
+                    value="{{ old('image') }}">
             </div>
             @error('image')
                 <p class="text-danger fw-medium m-0">

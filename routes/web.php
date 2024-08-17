@@ -27,3 +27,9 @@ Route::view("/admin-view-product",'admin.view-product');
 
 
 Route::post('/add-product',[productController::class,'addProduct']);
+
+
+
+
+
+Route::get('/',[productController::class,'getData']);
