@@ -80,31 +80,37 @@
             <hr class="m-0 p-0">
         </div>
         <div class="row">
-            @for ($i = 0; $i < 6; $i++)
-                <div class="col-lg-2 my-2">
-                    <div class="card border-0">
-                        <img width="100%"
-                            src="https://img.drz.lazcdn.com/g/kf/S4c20e80c36274e208a7920b5fff8fe5a9.jpg_200x200q80.jpg_.webp"
-                            alt="">
+            @foreach ($sales as $item)
+                <div class="col-lg-3 my-2">
+                    <div class="card border-0 shadow p-4">
+                        <img width="100%" height="200px" style="object-fit: cover"
+                            src="{{ asset('/storage/' . $item->image) }}" alt="">
                         <p class="m-0 text-capitalize">
                             Washing machine GM-720 for medium sized...
                         </p>
                         <p class="fs-4" style="color: #F85606">
-                            Rs.12,099
+
+                            Rs. <span class="discount_price">
+                                {{ $item->discount_price }}
+                            </span>
 
                         </p>
                         <div class="d-flex">
 
-                            <p class="text-secondary m-0 text-sm text-decoration-line-through">
-                                Rs.14,800
+                            <p class="text-secondary m-0 text-sm text-decoration-line-through ">
+                                Rs. <span class="actual_price"> {{ $item->actual_price }}</span>
                             </p>
-                            <p class="m-0 text-sm">
-                                -18%
+                            <p class="m-0 text-sm percentage ms-2 border px-2">
+
                             </p>
                         </div>
+
                     </div>
                 </div>
-            @endfor
+            @endforeach
+        </div>
+        <div class="d-flex justify-content-end">
+            {{ $sales->links('pagination::bootstrap-4') }}
         </div>
     </div>
 
@@ -134,7 +140,7 @@
                             <p class="text-secondary m-0 text-sm text-decoration-line-through ">
                                 Rs. <span class="actual_price"> {{ $item->actual_price }}</span>
                             </p>
-                            <p class="m-0 text-sm percentage">
+                            <p class="m-0 text-sm percentage ms-2 border px-2">
 
                             </p>
                         </div>
@@ -219,11 +225,11 @@
         let percentage = document.querySelectorAll('.percentage')
 
         actual_price.forEach((item, index) => {
+            // console.log(index)
             let convertedActualPrice = parseInt(item.innerText)
-            let convertedDiscountPrice = parseInt(discount_price[index].innerText)
-            let discount = (((convertedActualPrice - convertedDiscountPrice) / convertedActualPrice) * 100).toFixed(
-                0)
-            percentage[index].innerText = `${discount}%`
+            let convertedDiscountPrice = discount_price[index].innerText
+            let per = (((convertedActualPrice - convertedDiscountPrice) / convertedActualPrice) * -100).toFixed(0)
+            percentage[index].innerText = ` ${per}%`
         })
     </script>
 

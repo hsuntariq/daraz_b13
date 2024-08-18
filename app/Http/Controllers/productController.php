@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Sales;
 use Illuminate\Http\Request;
 
 class productController extends Controller
@@ -32,12 +33,14 @@ class productController extends Controller
 
 
 
-    public function getProducts(){
+    public function getData(){
         $prod = Products::all();
-        return view('welcome',compact('prod'));
+        $sales = Sales::paginate(4);
+        return view('welcome',compact('prod','sales'));
     }
 
     
+
 
 
 
