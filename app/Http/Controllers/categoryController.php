@@ -24,4 +24,13 @@ class categoryController extends Controller
 
 
     }
+
+
+    public function getCategory(){
+        $categories = Category::all();
+        return view('admin.add-product',compact('categories'));
+    }
+
+ 
+
 }

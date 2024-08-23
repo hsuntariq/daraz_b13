@@ -36,6 +36,21 @@
                 </p>
             @enderror
             <div class="form-group">
+                <label for="">Category</label>
+                <select class="form-control" name="category_id">
+                    @foreach ($categories as $item)
+                        <option value="{{ $item->id }}">
+                            {{ $item->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            @error('discount_price')
+                <p class="text-danger fw-medium m-0">
+                    {{ $message }}
+                </p>
+            @enderror
+            <div class="form-group">
                 <label for="">Description</label>
                 <textarea name="description" id="" cols="30" rows="4" class="form-control"
                     value="{{ old('description') }}"></textarea>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\salesController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,14 +28,19 @@ Route::view("/admin-add-product",'admin.add-product');
 Route::view("/admin-add-sale",'admin.add-sale');
 Route::view("/admin-add-category",'admin.add-category');
 Route::view("/admin-view-product",'admin.view-product');
+Route::view("/sign-up",'signup');
+
 
 
 
 Route::post('/add-product',[productController::class,'addProduct']);
 Route::post('/add-sale',[salesController::class,'addSale']);
 Route::post('/add-category',[categoryController::class,'addCategory']);
+Route::post('/signup',[userController::class,'signUP']);
+Route::post('/logout',[userController::class,'logout']);
 
 
 
 
 Route::get('/',[productController::class,'getData']);
+Route::get('/admin-add-product',[categoryController::class,'getCategory']);

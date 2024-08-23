@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Products;
 use App\Models\Sales;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class productController extends Controller
             "actual_price" => ['required','integer','min:100','max:500000'],
             "discount_price" => ['required','integer','min:100','max:50000'],
             "description" => ['required','min:10','max:300'],
+            "category_id" => ['required'],
             "image" => ['required','mimes:jpg,png,jpeg']
         ]);
 
@@ -36,7 +38,9 @@ class productController extends Controller
     public function getData(){
         $prod = Products::all();
         $sales = Sales::paginate(4);
-        return view('welcome',compact('prod','sales'));
+        $categories = Category::all();
+
+        return view('welcome',compact('prod','sales','categories'));
     }
 
     

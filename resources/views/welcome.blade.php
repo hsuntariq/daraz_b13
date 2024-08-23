@@ -46,22 +46,24 @@
     }
 </style>
 <x-layout>
+    <x-flash />
     <x-navbar />
     <x-slider />
 
     <div class="container">
         <h2 class="fw-light">Categories</h2>
         <div class="row flex-wrap">
-            @for ($i = 0; $i < 12; $i++)
+            @foreach ($categories as $item)
                 <div
-                    class="col-xl-2 bg-white col-lg-3 col-md-4 col-sm-4 col-6 border border-top-0 border-start-0 my-card text-center p-4 rounded-0">
+                    class="col-xl-2 text-center bg-white col-lg-3 col-md-4 col-sm-4 col-6 border border-top-0 border-start-0 my-card text-center p-4 rounded-0">
 
-                    <img width="70%" class="d-block mx-auto"
-                        src="https://img.drz.lazcdn.com/static/pk/p/0bb9c6c92099c81dbe1aa42910a8ac5f.jpg_80x80q80.jpg_.webp"
-                        alt="">
-                    <p style="width:max-content">Messenger bags</p>
+                    <img width="100px" style="object-fit: cover" height="100px" class="d-block mx-auto"
+                        src={{ asset('/storage/' . $item->image) }} alt="">
+                    <p style="width:max-content" class="text-center mx-auto">
+                        {{ $item->name }}
+                    </p>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
