@@ -4,25 +4,45 @@
         <li>save more on app</li>
         <li>sell on daraz</li>
         <li>help & support</li>
+        @auth
+
+            @can('admin')
+                <li>
+                    <a href="/admin-dashboard" class="text-decoration-none text-white">
+                        Admin dashboard
+                    </a>
+                </li>
+            @endcan
+        @endauth
 
         @guest
-            <li>login</li>
-            <li>sign up</li>
+            <li>
+                <a href="/login" class="text-decoration-none text-white">
+                    login
+                </a>
+            </li>
+            <li>
+                <a href="/sign-up" class="text-decoration-none text-white">
+                    sign up</a>
+            </li>
         @endguest
 
 
 
         @auth
             <li>
-                Salam {{ auth()->user()->name }}
+                Salam <span class="fw-bold text-dark">
+                    {{ auth()->user()->name }}
+                </span>
             </li>
 
 
             <li>
                 <form action="/logout" method="POST">
                     @csrf
-                    <button class="btn btn-warning">
-                        Logout</button>
+                    <button class="bg-transparent border-0 fs-3 text-white ">
+                        <div class="bi bi-power"></div>
+                    </button>
                 </form>
             </li>
         @endauth

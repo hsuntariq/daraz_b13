@@ -23,24 +23,30 @@ Route::get('/', function () {
 
 
 // admin routes
-Route::view("/admin-dashboard",'admin.dashboard');
-Route::view("/admin-add-product",'admin.add-product');
-Route::view("/admin-add-sale",'admin.add-sale');
-Route::view("/admin-add-category",'admin.add-category');
-Route::view("/admin-view-product",'admin.view-product');
+Route::view("/admin-dashboard",'admin.dashboard')->middleware(['auth','admin']);
+Route::view("/admin-add-product",'admin.add-product')->middleware(['auth','admin']);
+Route::view("/admin-add-sale",'admin.add-sale')->middleware(['auth','admin']);
+Route::view("/admin-add-category",'admin.add-category')->middleware(['auth','admin']);
+Route::view("/admin-view-products",'admin.view-products')->middleware(['auth','admin']);
+Route::view("/admin-view-category",'admin.view-category')->middleware(['auth','admin']);
 Route::view("/sign-up",'signup');
+Route::view("/login",'login');
 
 
 
 
-Route::post('/add-product',[productController::class,'addProduct']);
-Route::post('/add-sale',[salesController::class,'addSale']);
-Route::post('/add-category',[categoryController::class,'addCategory']);
+Route::post('/add-product',[productController::class,'addProduct'])->middleware(['auth','admin']);
+Route::post('/add-sale',[salesController::class,'addSale'])->middleware(['auth','admin']);
+Route::post('/add-category',[categoryController::class,'addCategory'])->middleware(['auth','admin']);
 Route::post('/signup',[userController::class,'signUP']);
 Route::post('/logout',[userController::class,'logout']);
+Route::post('/login',[userController::class,'login'])->name('log');
+Route::post('/delete/{id}',[productController::class,'deleteProduct'])->middleware(['auth','admin']);
 
 
 
 
 Route::get('/',[productController::class,'getData']);
-Route::get('/admin-add-product',[categoryController::class,'getCategory']);
+Route::get('/admin-add-product',[categoryController::class,'getCategory'])->middleware(['auth','admin']);
+Route::get('/admin-view-category',[categoryController::class,'getCategories'])->middleware(['auth','admin']);
+Route::get('/admin-view-products',[productController::class,'getProducts'])->middleware(['auth','admin']);

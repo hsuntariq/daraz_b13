@@ -5,6 +5,11 @@
     </div>
     <ul class="d-flex flex-column list-unstyled gap-5 text-white fw-medium fs-5 py-5 px-3 text-capitalize">
         <li>
+            <a href="/" class="text-white text-decoration-none fw-medium">
+                <i class="bi bi-house"></i>Home
+            </a>
+        </li>
+        <li>
             <div class="dropdown">
                 <span class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-speedometer"></i> Dashboard
@@ -44,7 +49,7 @@
                 </span>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/admin-add-category">Add category</a></li>
-                    <li><a class="dropdown-item" href="#">view category</a></li>
+                    <li><a class="dropdown-item" href="/admin-view-category">view category</a></li>
                 </ul>
             </div>
         </li>

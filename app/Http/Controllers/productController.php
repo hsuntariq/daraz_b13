@@ -42,6 +42,20 @@ class productController extends Controller
 
         return view('welcome',compact('prod','sales','categories'));
     }
+    public function getProducts(){
+        $prod = Products::paginate(8);
+        
+
+        return view('admin.view-products',compact('prod'));
+    }
+
+
+
+    public function deleteProduct($id){
+        $findProduct = Products::find($id);
+        $findProduct->delete();
+        return back()->with('message','deleted successfully!');
+    }
 
     
 

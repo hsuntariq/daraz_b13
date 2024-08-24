@@ -30,7 +30,10 @@ class categoryController extends Controller
         $categories = Category::all();
         return view('admin.add-product',compact('categories'));
     }
+    public function getCategories(){
+        $categories = Category::paginate(8);
+        return view('admin.view-category',compact('categories'));
+    }
 
- 
 
 }

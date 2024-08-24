@@ -35,4 +35,30 @@ class userController extends Controller
         $req->session()->regenerateToken();
         return back()->with('message','See you soon');
     }
+
+
+    public function login(Request $req){
+        $formFields = $req->validate([
+            "phone" => 'required',
+            "password" => 'required',
+        ]);
+
+
+        // check if use exists or not
+        if(auth()->attempt($formFields)){
+            $req->session()->regenerateToken();
+            if(auth()->user()->role== 'admin'){
+                return redirect('/admin-dashboard')->with('message','Welcome back');
+            }else{
+                return redirect('/')->with('message','Welcome back');
+
+            }
+        }else{
+            return back()->with('message','Invalid credentials');
+        }
+
+
+    }
+
+
 }
