@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\salesController;
@@ -31,6 +32,7 @@ Route::view("/admin-view-products",'admin.view-products')->middleware(['auth','a
 Route::view("/admin-view-category",'admin.view-category')->middleware(['auth','admin']);
 Route::view("/sign-up",'signup');
 Route::view("/login",'login');
+Route::view("/cart",'users.cart');
 
 
 
@@ -42,11 +44,14 @@ Route::post('/signup',[userController::class,'signUP']);
 Route::post('/logout',[userController::class,'logout']);
 Route::post('/login',[userController::class,'login'])->name('log');
 Route::post('/delete/{id}',[productController::class,'deleteProduct'])->middleware(['auth','admin']);
-
-
+Route::post('/add-to-cart',[cartController::class,'addToCart'])->middleware(['auth']);
+Route::post('/delete-cart/{id}',[cartController::class,'deleteCartData']);
+Route::post('/update-quantity/{id}',[cartController::class,'updateQuantity']);
 
 
 Route::get('/',[productController::class,'getData']);
 Route::get('/admin-add-product',[categoryController::class,'getCategory'])->middleware(['auth','admin']);
 Route::get('/admin-view-category',[categoryController::class,'getCategories'])->middleware(['auth','admin']);
 Route::get('/admin-view-products',[productController::class,'getProducts'])->middleware(['auth','admin']);
+Route::get('/get-cart-data',[cartController::class,'getCartData']);
+Route::get('/cart',[cartController::class,'getMyCart'])->middleware('auth');

@@ -29,6 +29,17 @@
 
 
 
+        <li>
+            <a href="/cart" class="text-white text-decoration-none">
+
+                <p class="text-center cart-count m-0">
+                    0
+                </p>
+                <div class="bi bi-cart fs-3">
+
+                </div>
+            </a>
+        </li>
         @auth
             <li>
                 Salam <span class="fw-bold text-dark">

@@ -128,7 +128,7 @@
                         <img width="100%" height="200px" style="object-fit: cover"
                             src="{{ asset('/storage/' . $item->image) }}" alt="">
                         <p class="m-0 text-capitalize">
-                            Washing machine GM-720 for medium sized...
+                            {{ $item->name }}
                         </p>
                         <p class="fs-4" style="color: #F85606">
 
@@ -146,8 +146,23 @@
 
                             </p>
                         </div>
-                        <div class="text-sm">
-                            ⭐⭐⭐⭐⭐
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+
+                            <div class="text-sm">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <form action="/add-to-cart" class="form-data" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{ $item->name }}" name="name">
+                                <input type="hidden" value="{{ $item->description }}" name="description">
+                                <input type="hidden" value="{{ $item->actual_price }}" name="actual_price">
+                                <input type="hidden" value="{{ $item->discount_price }}" name="discount_price">
+                                <input type="hidden" value="{{ $item->image }}" name="image">
+                                <button type="button" style="cursor:pointer"
+                                    class="border cart bg-transparent px-3 py-2  rounded-pill">
+                                    <div class="bi bi-cart-plus"></div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -221,6 +236,10 @@
         </div>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+
     <script>
         let discount_price = document.querySelectorAll('.discount_price')
         let actual_price = document.querySelectorAll('.actual_price')
@@ -232,6 +251,38 @@
             let convertedDiscountPrice = discount_price[index].innerText
             let per = (((convertedActualPrice - convertedDiscountPrice) / convertedActualPrice) * -100).toFixed(0)
             percentage[index].innerText = ` ${per}%`
+        })
+
+
+
+        $(document).ready(function() {
+            $.ajax({
+                url: '/get-cart-data',
+                type: 'GET',
+                success: function(data) {
+                    $('.cart-count').html(data)
+                }
+            })
+        })
+
+
+
+        $(document).on('click', '.cart', function() {
+            $.ajax({
+                url: '/add-to-cart',
+                type: 'POST',
+                data: $(this).closest('.form-data').serialize(),
+                success: function(data) {
+                    alert('Added to cart');
+                    $.ajax({
+                        url: '/get-cart-data',
+                        type: 'GET',
+                        success: function(data) {
+                            $('.cart-count').html(data)
+                        }
+                    })
+                }
+            })
         })
     </script>
 
